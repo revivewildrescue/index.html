@@ -1,1 +1,19 @@
+{
+    "default": {
+        "firstScene": "scene1",
+        "autoLoad": true,
+        "sceneFadeDuration": 1000
+    },
 
+    "scenes": {
+        "scene1": {
+            "title": "My 360 Video",
+            "type": "equirectangular",
+            "panorama": "../images/panorama.jpg",
+            "autoLoad": true,
+            "yaw": 0,
+            "pitch": 0,
+            "hfov": 100
+        }
+    }
+}
