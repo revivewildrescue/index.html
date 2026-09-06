@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>360 Viewer</title>
+
+    <link rel="stylesheet" href="pannellum.css">
+
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #panorama {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="panorama"></div>
+
+<script src="pannellum.js"></script>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const config = params.get("config");
+
+    fetch(config)
+        .then(response => response.json())
+        .then(data => {
+
+            pannellum.viewer("panorama", data);
+
+        })
+        .catch(error => {
+
+            document.body.innerHTML =
+                "<h2 style='color:white;text-align:center;margin-top:40px'>" +
+                "Unable to load panorama" +
+                "</h2>";
+
+            console.error(error);
+        });
+</script>
+
+</body>
+</html>
